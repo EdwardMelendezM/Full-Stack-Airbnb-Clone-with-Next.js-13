@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { AiFillGithub } from 'react-icons/ai';
 import {FcGoogle} from 'react-icons/fc'
-import {useState, useCallback} from 'react'
+import {useState} from 'react'
 import { toast } from 'react-hot-toast'
 import {
   FieldValues,
