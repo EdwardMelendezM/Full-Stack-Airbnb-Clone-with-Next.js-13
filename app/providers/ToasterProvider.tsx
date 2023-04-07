@@ -3,7 +3,7 @@
 import { Toaster } from "react-hot-toast"
 
 const ToasterProvider =()=>{
-  return(
+  return( 
     <Toaster/>
   )
 }
