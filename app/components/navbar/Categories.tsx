@@ -1,3 +1,4 @@
+'use client'
 import Container from "../Container";
 import {IoDiamond} from 'react-icons/io5'
 import {TbBeach, TbMountain, TbPool} from 'react-icons/tb'
