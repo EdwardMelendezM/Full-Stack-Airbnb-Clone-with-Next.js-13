@@ -19,7 +19,8 @@ export async function POST(
     roomCount,
     bathroomCount,
     guestCount,
-    location,price
+    location,
+    price
   } = body;
 
   Object.keys(body).forEach((value:any)=>{
