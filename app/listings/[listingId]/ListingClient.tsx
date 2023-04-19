@@ -5,8 +5,7 @@ import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import { categories } from "@/app/components/navbar/Categories";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { SafeListing, SafeUser } from "@/app/types";
-import { Reservation } from "@prisma/client";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { differenceInCalendarDays,  eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -20,7 +19,7 @@ const initialDateRange ={
 }
 
 interface ListingClientProps{
-  reservations?:Reservation[]
+  reservations?:SafeReservation[]
   listing:SafeListing & {
     user:SafeUser
   }
@@ -88,14 +87,17 @@ const ListingClient:React.FC<ListingClientProps> = ({
   useEffect(()=>{
     if(dateRange.startDate && dateRange.endDate){
       const dayCount = differenceInCalendarDays(
-        dateRange.startDate,
-        dateRange.endDate
+        dateRange.endDate,
+        dateRange.startDate
       );
       if(dayCount && listing.price){
-        setTotalPrice(dayCount*listing.price)
+        setTotalPrice((dayCount+1)*listing.price)
+      
+        
       }else{
         setTotalPrice(listing.price )
       }
+      
     }
   },[dateRange,listing.price])
   
