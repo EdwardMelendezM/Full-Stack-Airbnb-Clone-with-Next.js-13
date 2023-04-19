@@ -38,8 +38,12 @@ const RegisterModal = () => {
   const onSubmit:SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
     axios.post('/api/register',data)
-      .then(()=>{ registerModal.onClose })
-      .catch((error)=>{ toast.error('Something when wront') })
+      .then(()=>{
+        toast.success('Success. Now login')
+        registerModal.onClose()
+        loginModal.onOpen()
+      })
+      .catch(()=>{ toast.error('Something when wront') })
       .finally(()=>{ setIsLoading(false) })
   }
   const toggle = useCallback(()=>{
